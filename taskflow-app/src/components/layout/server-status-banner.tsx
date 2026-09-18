@@ -18,6 +18,16 @@ const API_BASE_URL =
 type ServerState = 'checking' | 'online' | 'sleeping' | 'error';
 
 export function ServerStatusBanner() {
+  // Disable completely on localhost or development
+  const isLocal =
+    process.env.NODE_ENV === 'development' ||
+    API_BASE_URL.includes('localhost') ||
+    API_BASE_URL.includes('127.0.0.1');
+
+  if (isLocal && process.env.NEXT_PUBLIC_SHOW_SERVER_BANNER !== 'true') {
+    return null;
+  }
+
   const [status, setStatus] = useState<ServerState>('checking');
   const [latency, setLatency] = useState<number | null>(null);
   const [secondsWaiting, setSecondsWaiting] = useState<number>(0);
