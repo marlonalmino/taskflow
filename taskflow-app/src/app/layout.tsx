@@ -12,9 +12,15 @@ export const metadata: Metadata = {
   title: 'TaskFlow — Modern Task & Workflow Management',
   description:
     'A production-ready task management dashboard with real-time stats, JWT auth, and intuitive CRUD controls.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 import { Providers } from '@/components/providers';
+import { ServerStatusBanner } from '@/components/layout/server-status-banner';
 
 export default function RootLayout({
   children,
@@ -24,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="bg-[#090d16] text-slate-100 antialiased min-h-screen flex flex-col">
+        <ServerStatusBanner />
         <Providers>{children}</Providers>
       </body>
     </html>

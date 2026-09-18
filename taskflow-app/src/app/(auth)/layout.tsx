@@ -1,6 +1,6 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function AuthLayout({
   children,
@@ -15,10 +15,15 @@ export default function AuthLayout({
 
       {/* Brand Header */}
       <div className="mb-8 flex flex-col items-center gap-2">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30 group-hover:scale-105 transition-transform">
-            <Sparkles className="w-5 h-5" />
-          </div>
+        <Link href="/" className="flex items-center gap-3 group">
+          <Image
+            src="/logo.png"
+            alt="TaskFlow Logo"
+            width={44}
+            height={44}
+            className="rounded-2xl object-contain drop-shadow-md group-hover:scale-105 transition-transform"
+            priority
+          />
           <span className="font-bold text-2xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
             TaskFlow
           </span>

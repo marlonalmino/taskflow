@@ -12,6 +12,8 @@ import {
   Code2,
 } from 'lucide-react';
 
+import Image from 'next/image';
+
 export function Sidebar() {
   const pathname = usePathname();
 
@@ -34,9 +36,14 @@ export function Sidebar() {
     <aside className="w-64 bg-[#0c111d] border-r border-slate-800/80 flex flex-col shrink-0 min-h-screen">
       {/* Brand */}
       <div className="h-16 flex items-center px-6 gap-3 border-b border-slate-800/60">
-        <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30">
-          <Sparkles className="w-5 h-5" />
-        </div>
+        <Image
+          src="/logo.png"
+          alt="TaskFlow Logo"
+          width={36}
+          height={36}
+          className="rounded-xl object-contain drop-shadow-md"
+          priority
+        />
         <div>
           <span className="font-bold text-base tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
             TaskFlow

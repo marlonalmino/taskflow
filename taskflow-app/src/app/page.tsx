@@ -14,6 +14,8 @@ import {
   BookOpen,
 } from 'lucide-react';
 
+import Image from 'next/image';
+
 export default function LandingPage() {
   const { user, isAuthenticated, isLoading } = useAuth();
 
@@ -25,9 +27,14 @@ export default function LandingPage() {
       {/* Navigation */}
       <header className="h-20 border-b border-slate-800/60 px-8 flex items-center justify-between z-10 max-w-7xl w-full mx-auto">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30">
-            <Sparkles className="w-5 h-5" />
-          </div>
+          <Image
+            src="/logo.png"
+            alt="TaskFlow Logo"
+            width={38}
+            height={38}
+            className="rounded-xl object-contain drop-shadow-md"
+            priority
+          />
           <span className="font-bold text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
             TaskFlow
           </span>

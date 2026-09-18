@@ -32,7 +32,7 @@ export default function RegisterPage() {
     setError('');
 
     try {
-      await register(name, email, password);
+      await register(name.trim(), email.trim().toLowerCase(), password);
     } catch (err: unknown) {
       const msg =
         (err as { message?: string }).message || 'Failed to register account';
