@@ -13,9 +13,12 @@ export const metadata: Metadata = {
   description:
     'A production-ready task management dashboard with real-time stats, JWT auth, and intuitive CRUD controls.',
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/icon.png',
   },
 };
 

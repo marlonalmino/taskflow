@@ -129,7 +129,7 @@ export function ServerStatusBanner() {
             onClick={() => setIsCollapsed(false)}
             className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-slate-200 transition-colors py-0.5 px-2 rounded hover:bg-slate-800/60"
           >
-            Ver Detalhes do Servidor
+            Server Details
             <ChevronDown className="w-3 h-3" />
           </button>
         </div>
@@ -171,27 +171,27 @@ export function ServerStatusBanner() {
             <div className="flex items-center gap-2 font-semibold text-xs tracking-tight">
               {status === 'online' && (
                 <span className="text-emerald-300">
-                  Backend NestJS Conectado & Operante
+                  NestJS REST API Online & Operational
                 </span>
               )}
               {status === 'checking' && (
-                <span>Testando conexão com a API REST...</span>
+                <span>Probing REST API connection...</span>
               )}
               {status === 'sleeping' && (
                 <span className="flex items-center gap-1.5 text-amber-200 font-bold">
                   <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-                  Servidor Render em Modo Sleep (Free Tier)
+                  Render Backend in Sleep Mode (Free Tier)
                 </span>
               )}
             </div>
 
             <p className="text-[11px] opacity-80 mt-0.5 leading-relaxed">
               {status === 'online' &&
-                `Instância ativa e pronta para requisições (${latency ?? 80}ms de latência).`}
+                `Instance active and ready for incoming requests (${latency ?? 80}ms latency).`}
               {status === 'checking' &&
-                'Aguarde enquanto verificamos a disponibilidade do backend.'}
+                'Please wait while we verify backend connection...'}
               {status === 'sleeping' &&
-                'No plano gratuito do Render, o servidor hiberna após inatividade e leva ~30 a 50s para inicializar na primeira chamada.'}
+                'Render free tier instances spin down after inactivity. Cold start takes ~30-50s on the first request.'}
             </p>
           </div>
         </div>
@@ -211,12 +211,12 @@ export function ServerStatusBanner() {
               {isWakingUp ? (
                 <>
                   <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                  <span>Acordando Instância ({secondsWaiting}s)...</span>
+                  <span>Waking up Instance ({secondsWaiting}s)...</span>
                 </>
               ) : (
                 <>
                   <Zap className="w-3.5 h-3.5 fill-current" />
-                  <span>Acordar Servidor Agora</span>
+                  <span>Wake Up Server Now</span>
                 </>
               )}
             </button>
@@ -226,7 +226,7 @@ export function ServerStatusBanner() {
             <button
               onClick={() => setIsCollapsed(true)}
               className="p-1.5 rounded-lg text-emerald-400/80 hover:text-emerald-200 hover:bg-emerald-900/40 transition-colors"
-              title="Recolher banner"
+              title="Collapse status banner"
             >
               <ChevronUp className="w-4 h-4" />
             </button>
