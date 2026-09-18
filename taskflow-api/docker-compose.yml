@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: taskflow_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: taskflow
+      POSTGRES_PASSWORD: taskflow_secret
+      POSTGRES_DB: taskflow
+    ports:
+      - '5432:5432'
+    volumes:
+      - taskflow_pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taskflow_api
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    environment:
+      DATABASE_URL: 'postgresql://taskflow:taskflow_secret@postgres:5432/taskflow?sslmode=disable'
+      JWT_SECRET: 'dev-docker-secret-key-replace-in-production'
+      JWT_EXPIRATION: '15m'
+      REFRESH_TOKEN_EXPIRATION_DAYS: 7
+      PORT: 3001
+      NODE_ENV: 'development'
+      CORS_ORIGIN: 'http://localhost:3000'
+    depends_on:
+      - postgres
+
+volumes:
+  taskflow_pgdata:
